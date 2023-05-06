@@ -7,7 +7,6 @@
 #include "ShaderClass.h"
 
 class Texture {
-
 public:
 	GLuint ID;
 	GLenum type;
@@ -19,7 +18,6 @@ public:
 	void Bind();
 	void Unbind();
 	void Delete();
-
 };
 
 #endif
