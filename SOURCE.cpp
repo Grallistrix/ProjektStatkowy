@@ -1,4 +1,4 @@
-﻿#include<iostream>
+#include<iostream>
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -19,25 +19,130 @@ float cameraSensiticity = 100.0f;
 bool firstClick = true;
 
 // Vertices coordinates
-GLfloat vertices[] =
-{ //     COORDINATES     /        COLORS      /				 TexCoord  //
-	//x      y     z				RBG						x   y
+GLfloat beach_and_grass[] =
+{ //     COORDINATES					/        COLORS      /				 TexCoord  //
+	//x      y     z								RBG						x   y
+	// 
+	//Pierwsze 16 to Plaża, kolejne 8 to trawa
+//1
+-3.5355339059327f,3.5355339059327f, 0.0f,         1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+0.0f,5.0f, 0.0f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+0.0f,3.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//2
+-3.5355339059327f,3.5355339059327f, 0.0f,         1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+-2.1213203435596f,2.1213203435596f, 0.5f,         1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+0.0f,3.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//3
+0.0f,5.0f, 0.0f,								 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+0.0f,3.0f, 0.5f,								 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+3.5355339059327f,3.5355339059327f, 0.0f,		 1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//4
+0.0f,3.0f, 0.5f,								 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+3.5355339059327f, 3.5355339059327f, 0.0f,		 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+2.1213203435596f, 2.1213203435596f, 0.5f,		 1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//5
+2.1213203435596f,2.1213203435596f, 0.5f,		 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+3.5355339059327f,3.5355339059327f, 0.0f,	     1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+3.0f,0.0f, 0.5f,								 1.0f, 0.0f, 1.0f,		0.5f, 1.0f,
+//6
+3.0f,0.0f, 0.5f,							 	 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+3.5355339059327f,3.5355339059327f, 0.0f,		 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+5.0f,0.0f, 0.0f,								 1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//7
+-3.5355339059327f,3.5355339059327F, 0.0f,		 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+-2.1213203435596f,2.1213203435596f, 0.5f,        1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+-3.0f,0.0f, 0.5f,								 1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//8
+-3.5355339059327f,3.5355339059327f, 0.0f   ,	 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+-3.0f,0.0f, 0.5f     ,							 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+-5.0f,0.0f, 0.0f    ,						     1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//9
+-5.0f,0.0f, 0.0f    ,							 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+-3.0f,0.0f, 0.5f    ,							 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+-3.5355339059327f,-3.5355339059327f, 0.0f  ,     1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//10
+-3.0f,0.0f, 0.5f  ,								 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+-3.5355339059327f,-3.5355339059327f, 0.0f,       1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+-2.1213203435596f,-2.1213203435596f, 0.5f,       1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//11
+-3.5355339059327f,-3.5355339059327f, 0.0f ,      1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+0.0f,-3.0f, 0.5f     ,							 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+-2.1213203435596f,-2.1213203435596f, 0.5f  ,     1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//12
+0.0f,-3.0f, 0.5f   ,						     1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+-3.5355339059327f,-3.5355339059327f, 0.0f  ,     1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+0.0f,-5.0f, 0.0f    ,							 1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//13
+0.0f,-3.0f, 0.5f   ,							 1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+0.0f,-5.0f, 0.0f,							     1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+3.5355339059327f,-3.5355339059327f, 0.0f ,       1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//14
+2.1213203435596f,-2.1213203435596f, 0.5f    ,    1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+0.0f,-3.0f, 0.5f  ,								 1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+3.5355339059327f,-3.5355339059327f, 0.0f    ,    1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//15
+3.5355339059327f,-3.5355339059327f, 0.0f ,        1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+2.1213203435596f,-2.1213203435596f, 0.5f,         1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+3.0f,0.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
+//16
+3.0f,0.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.5f,
+5.0f,0.0f, 0.0f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+3.5355339059327f,-3.5355339059327f, 0.0f,         1.0f, 0.0f, 1.0f,      0.5f, 1.0f,
 
-	//Podloga
+//START TRAWY
+//1
+-3.0f,0.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+-2.1213203435596f,2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//2
+-2.1213203435596f,2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+0.0f, 3.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//3
+0.0f, 3.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+2.1213203435596f, 2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//4
+3.0f, 0.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+2.1213203435596f, 2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//5
+3.0f,0.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+2.1213203435596f,-2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//6
+0.0f,-3.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+2.1213203435596f,-2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//7
+0.0f, -3.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+-2.1213203435596f,-2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,      0.5f, 0.5f,
+//8
+-3.0f, 0.0f, 0.5f,								  1.0f, 0.0f, 1.0f,      0.0f, 0.0f,
+-2.1213203435596f,-2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
+0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,		 0.5f, 0.5f,
+
+//Woda [WIP, jakoś trzeba poprawić, dunno, może napisać funkcję żeby zrobiła 100 kwadratów w to miejsce]
+-20.0f, -20.0f, 0.0f,				1.0f, 0.0f, 1.0f,	0.5f, 0.0f,
+-20.0f, 20.0f, 0.0f,				1.0f, 0.0f, 1.0f,	1.0f, 0.0f,
+20.0f, 20.0f, 0.0f,					1.0f, 0.0f, 1.0f,	1.0f, 0.5f,
+
+-20.0f, -20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+20.0f, -20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+20.0f, 20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+
+
+};
+
+GLfloat vert2[] = {
 	-3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,	//A
 	 3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,     	 3.0f,  0.0f,	//B
 	 3.0f,  3.0f,  0.0f,       1.0f, 0.0f, 0.0f,         3.0f,  3.0f,	//C
 
 	 3.0f,  3.0f,  0.0f,       1.0f, 0.0f, 0.0f,    	 3.0f,  3.0f,	//-A
 	-3.0f,  3.0f,  0.0f,       1.0f, 0.0f, 0.0f,	     0.0f,  3.0f,	//-B
-	-3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,		 0.0f,  0.0f,	//-C
-
-	//Boczna Sciana 1
-	 3.0f,  3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-	-1.0f,  3.0f,  0.0f,	   1.0, 0.0f, 0.0f,			 4.0f,  0.0f,
-	-1.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-
+	-3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,		 0.0f,  0.0f	//-C
 };
 
 int main()
@@ -65,7 +170,7 @@ int main()
 	VAO1.Bind();
 
 	// Generuj Vertex i Element Buffer Object, zlinkuj
-	VBO VBO1(vertices, sizeof(vertices));
+	VBO VBO1(beach_and_grass, sizeof(beach_and_grass));
 
 	// Links VBO attributes such as coordinates and colors to VAO
 	VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
@@ -81,8 +186,8 @@ int main()
 
 
 	// Oteksturuj kostke
-	Texture kostka("bruk_granica.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	kostka.texUnit(shaderProgram, "tex0", 0);
+	Texture texture_frame_1("everything_texture.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	texture_frame_1.texUnit(shaderProgram, "tex0", 0);
 
 	//Kamera, Test Glebokosci i enable przezroczyste tekstury
 	Camera kamera(const_width, const_height, glm::vec3(-2.0f, 3.0f, 1.0f));
@@ -100,28 +205,28 @@ int main()
 	{
 		currTime = glfwGetTime();
 
-		if (currTime - prevTime < 0.1)
-			continue;
+		//if (currTime - prevTime < 0.1)
+		//	continue;
 
 		prevTime = currTime;
-	
 		
-		glClearColor(0.21f, 0.33f, 0.21f, 1.0f);
+		
+		glClearColor(0.19f, 0.64f, 0.89f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		shaderProgram.Activate
+		shaderProgram.Activate();
+		//shaderProgram2.Activate();
 
 		kamera.Inputs(window);
 		kamera.Matrix(45.0f, 1.0f, 40.0f, shaderProgram, "camMatrix");
 
 		// Binds texture so that is appears in rendering
-
-		kostka.Bind();
-	
+		texture_frame_1.Bind();
 
 		VAO1.Bind();
+		//VAO2.Bind();
 		// Narysuj array na podstawie indicies
-		glDrawArrays(GL_TRIANGLES, 0, 42);
+		glDrawArrays(GL_TRIANGLES, 0, 50*3);
 		glfwSwapBuffers(window);
 
 
@@ -135,7 +240,7 @@ int main()
 
 	VAO1.Delete();
 	VBO1.Delete();
-	kostka.Delete();
+	texture_frame_1.Delete();
 	shaderProgram.Delete();
 	glfwDestroyWindow(window);
 	glfwTerminate();
