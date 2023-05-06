@@ -37,65 +37,7 @@ GLfloat vertices[] =
 	-1.0f,  3.0f,  0.0f,	   1.0, 0.0f, 0.0f,			 4.0f,  0.0f,
 	-1.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
 
-	 3.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  4.0f,
-	-1.0f,  3.0f,  3.0f,	   1.0, 0.0f, 0.0f,			 4.0f,  4.0f,
-	 3.0f,  3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
 
-	 //Boczna Sciana 2
-	 -3.0f, -3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-	 1.0f,  -3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  0.0f,
-	 1.0f,  -3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-	 -3.0f, -3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  4.0f,
-	  1.0f,  -3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  4.0f,
-	 -3.0f, -3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-
-	 //Srodkowa Sciana 1
-	 1.0f, -3.0f, 0.0f,		   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-	 1.0f,  1.0f,  0.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  0.0f,
-	 1.0f,  1.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-	 1.0f, -3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  4.0f,
-	 1.0f,  1.0f,  3.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  4.0f,
-	 1.0f, -3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-
-	 //Srodkowa Sciana 2
-	 -1.0f,  -1.0f, 0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-	 -1.0f,  3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  0.0f,
-	 -1.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-	 -1.0f, -1.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  4.0f,
-	 -1.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  4.0f,
-	 -1.0f,  -1.0f,  0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-
-	 //Boczna Long Sciana 1
-	 -3.0f,  -3.0f, 0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-	 -3.0f,  -3.0f, 3.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  0.0f,
-	 -3.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-	 -3.0f,  3.0f, 0.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  0.0f,
-	 -3.0f,  -3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,		 0.0f,  0.0f,
-	 -3.0f,  3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-
-	 //Boczna Long Sciana 2
-     3.0f,   3.0f, 0.0f,	   1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,
-	 3.0f,   3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,		 4.0f,  0.0f,
-	 3.0f,  -3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-
-	 3.0f,  -3.0f, 0.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  0.0f,
-	 3.0f,  3.0f,  0.0f,	   1.0f, 0.0f, 0.0f,		 0.0f,  0.0f,
-	 3.0f,  -3.0f,  3.0f,	   1.0f, 0.0f, 0.0f,	     4.0f,  4.0f,
-};
-
-GLfloat vert2[] = {
-	-3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,	     0.0f,  0.0f,	//A
-	 3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,     	 3.0f,  0.0f,	//B
-	 3.0f,  3.0f,  0.0f,       1.0f, 0.0f, 0.0f,         3.0f,  3.0f,	//C
-
-	 3.0f,  3.0f,  0.0f,       1.0f, 0.0f, 0.0f,    	 3.0f,  3.0f,	//-A
-	-3.0f,  3.0f,  0.0f,       1.0f, 0.0f, 0.0f,	     0.0f,  3.0f,	//-B
-	-3.0f, -3.0f,  0.0f,       1.0f, 0.0f, 0.0f,		 0.0f,  0.0f	//-C
 };
 
 int main()
@@ -134,18 +76,6 @@ int main()
 	VBO1.Unbind();
 
 
-	//PART 2
-	Shader shaderProgram2("default.vert", "default.frag");
-	VAO VAO2;
-	VAO2.Bind();
-	VBO VBO2(vert2, sizeof(vert2));
-	VAO2.LinkAttrib(VBO2, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
-	VAO2.LinkAttrib(VBO2, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	VAO2.LinkAttrib(VBO2, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	VAO2.Unbind();
-	VBO2.Unbind();
-	Texture kostka2("bruk_granica2.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	kostka2.texUnit(shaderProgram2, "tex0", 0);
 
 
 
@@ -174,32 +104,22 @@ int main()
 			continue;
 
 		prevTime = currTime;
-		
-		jkl++;
-		if (jkl > 120)
-			jkl = 0;
+	
 		
 		glClearColor(0.21f, 0.33f, 0.21f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		shaderProgram.Activate();
-		shaderProgram2.Activate();
+		shaderProgram.Activate
 
 		kamera.Inputs(window);
 		kamera.Matrix(45.0f, 1.0f, 40.0f, shaderProgram, "camMatrix");
 
 		// Binds texture so that is appears in rendering
-		if (jkl % 2 == 0) {
-		kostka2.Unbind();
+
 		kostka.Bind();
-		}
-		else {
-			kostka.Unbind();
-			kostka2.Bind();
-		}
+	
 
 		VAO1.Bind();
-		VAO2.Bind();
 		// Narysuj array na podstawie indicies
 		glDrawArrays(GL_TRIANGLES, 0, 42);
 		glfwSwapBuffers(window);
