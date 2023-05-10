@@ -11,19 +11,19 @@
 #include "EBO.h"
 
 #include "Camera.h"
+#include "indices.h"
 #include <vector>
+
 
 using std::cout;
 using std::endl;
 
+#define woda_width 20.0f
+
 const unsigned int const_width = 1000;
 const unsigned int const_height = 1000;
-float cameraSpeed = 0.001f;
-float cameraSensiticity = 100.0f;
-bool firstClick = true;
 
-// Vertices coordinates
-GLfloat scene_indices[] =
+GLfloat wyspa1_indices[] =
 { //     COORDINATES					/        COLORS      /				 TexCoord  //
 	//x      y     z								RBG						x   y
 	//
@@ -127,19 +127,107 @@ GLfloat scene_indices[] =
 -2.1213203435596f,-2.1213203435596f, 0.5f,		  1.0f, 0.0f, 1.0f,      0.5f, 0.0f,
 0.0f, 0.0f, 0.75f,								  1.0f, 0.0f, 1.0f,		 0.5f, 0.5f,
 
-//Woda [WIP, jakoś trzeba poprawić, dunno, może napisać funkcję żeby zrobiła 100 kwadratów w to miejsce]
--20.0f, -20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
--20.0f,	 20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-20.0f,   20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
-
--20.0f, -20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-20.0f, -20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-20.0f, 20.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
 };
 
-GLfloat vert2[] = {
-	0.0f, 1.2f
+GLfloat woda_indices[] = {
+-woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+0.0f, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+-woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+-woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+
+woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+0.0f, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+
+woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+0.0f, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+
+-woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+0.0f, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+-woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
+-woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+
 };
+
+
+void drawThing(int whichIndices, const char* image, Shader shadProg) {
+	//Stwórz pusty VBO, za moment wypełnimy
+	VBO obVBO;
+
+
+	//Wybierz indices to wygenerowania, zwykł parsing jakoś nie chce działać
+	switch (whichIndices)
+	{
+	case 0:
+		obVBO.setData(wyspa1_indices, sizeof(wyspa1_indices));
+		break;
+	case 1:
+		obVBO.setData(woda_indices, sizeof(woda_indices));
+		break;
+
+	default:
+		break;
+	}
+		
+	//Stwórz teksture, zbinduj
+	Texture texture(image, GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	texture.texUnit(shadProg, "tex0", 0);
+		texture.Bind();
+
+	//Stwórz VAO, zbinduj i zlinkuj atrybuty
+	VAO obVAO;
+	obVAO.Bind();
+	obVAO.LinkAttrib(obVBO, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+	obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+
+
+
+	glDrawArrays(GL_TRIANGLES, 0, 500 * 3);
+
+	//Unbind i Delete, żeby zużycie pamięci nie rosło jak bloki nad Wisłą
+	obVAO.Unbind();
+	obVBO.Unbind();
+	texture.Unbind();
+	obVAO.Delete();
+	obVBO.Delete();
+	texture.Delete();
+
+}
+void drawOcean(int frameState, Shader shaderProgram) {
+
+	switch (frameState) {
+	case 0:
+		drawThing(1, "everything_texture_frame1.png", shaderProgram);
+		break;
+	case 1:
+		drawThing(1, "everything_texture_frame2.png", shaderProgram);
+		break;
+	case 2:
+		drawThing(1, "everything_texture_frame3.png", shaderProgram);
+		break;
+	case 3:
+		drawThing(1, "everything_texture_frame4.png", shaderProgram);
+		break;
+	default:
+		break;
+	}
+
+}
+
+
+
 
 int main()
 {
@@ -158,46 +246,18 @@ int main()
 	gladLoadGL();
 	glViewport(0, 0, const_width, const_height);
 
-	// Generates Shader object using shaders default.vert and default.frag
+	// Stwóz szader
 	Shader shaderProgram("default.vert", "default.frag");
-
-	// Generuj VAO, binduj
-	VAO VAO1;
-	VAO1.Bind();
-
-	// Generuj Vertex (i Element Buffer Object jak wam sie chce robic), zlinkuj
-	VBO VBO1(scene_indices, sizeof(scene_indices));
-
-	// Links VBO attributes such as coordinates and colors to VAO
-	VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
-	VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	VAO1.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	// Unbind all to prevent accidentally modifying them
-	VAO1.Unbind();
-	VBO1.Unbind();
-
-	// Ładowanie tekstur wszystkiego
-	Texture texture_frame_1("everything_texture_frame1.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	texture_frame_1.texUnit(shaderProgram, "tex0", 0);
-
-	Texture texture_frame_2("everything_texture_frame2.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	texture_frame_1.texUnit(shaderProgram, "tex0", 0);
-
-	Texture texture_frame_3("everything_texture_frame3.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	texture_frame_1.texUnit(shaderProgram, "tex0", 0);
-
-	Texture texture_frame_4("everything_texture_frame4.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	texture_frame_1.texUnit(shaderProgram, "tex0", 0);
 
 	//Kamera, Test Glebokosci i enable przezroczyste tekstury
 	Camera kamera(const_width, const_height, glm::vec3(-2.0f, 3.0f, 1.0f));
-
 	glEnable(GL_DEPTH_TEST);
 
+	//Funkcje czasu do obsługi animacji
 	GLfloat currTime = glfwGetTime();
 	GLfloat prevTime = currTime;
-	int frame_state = 0;
 
+	int frame_state = 0;
 	while (!glfwWindowShouldClose(window))
 	{
 		//Porcja odpowiedzialna za klatkę animacji
@@ -209,24 +269,6 @@ int main()
 		if (frame_state >= 4)
 			frame_state = 0;
 
-		// Bindowanie odpowiedniej tekstury [na podstawieczasu
-		switch (frame_state) {
-		case 0:
-			texture_frame_1.Bind();
-			break;
-		case 1:
-			texture_frame_2.Bind();
-			break;
-		case 2:
-			texture_frame_3.Bind();
-			break;
-		case 3:
-			texture_frame_4.Bind();
-			break;
-		default:
-			return -23;
-		}
-
 		//Buffer Głębokości, Zapasowe tło, Szader
 		glClearColor(0.19f, 0.64f, 0.89f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -237,25 +279,29 @@ int main()
 		kamera.Inputs(window);
 		kamera.Matrix(30.0f, 1.0f, 80.0f, shaderProgram, "camMatrix");
 
-		//VAO, można by zrobić z niego też animacje
-		VAO1.Bind();
 
-		// Rysowanie
-		glDrawArrays(GL_TRIANGLES, 0, 500 * 3);
+		/// /RYSOWANIE 
+		/// Najpierw zbinduj teksture
+		/// potem zbinduj VAO
+		/// na końcu draw		
+		/// 
+		///VAO_morze.Bind();
+		///texture_morze.Bind();
+		//glDrawArrays(GL_TRIANGLES, 0, 500 * 3);
+
+
+		//RYSOWANIE OBIEKTÓW	
+		drawThing(0,"everything_texture.png",shaderProgram);		//Wyspa
+		drawOcean(frame_state, shaderProgram);						//Morze
+																	//Wyspa 2
+																	//Wyspa 3
 		glfwSwapBuffers(window);
-
 		glfwPollEvents();
 
-		cout << "\n\nX:" << kamera.Position.x << "\tY:" << kamera.Position.y << "\tZ:" << kamera.Position.z << endl;
-		cout << "Looking at:\t" "X:" << kamera.Orientation.x << "\tY:" << kamera.Orientation.y << "\tZ:" << kamera.Orientation.z << endl;
+	//	cout << "\n\nX:" << kamera.Position.x << "\tY:" << kamera.Position.y << "\tZ:" << kamera.Position.z << endl;
+	//	cout << "Looking at:\t" "X:" << kamera.Orientation.x << "\tY:" << kamera.Orientation.y << "\tZ:" << kamera.Orientation.z << endl;
 	}
 
-	VAO1.Delete();
-	VBO1.Delete();
-	texture_frame_1.Delete();
-	texture_frame_2.Delete();
-	texture_frame_3.Delete();
-	texture_frame_4.Delete();
 	shaderProgram.Delete();
 	glfwDestroyWindow(window);
 	glfwTerminate();
