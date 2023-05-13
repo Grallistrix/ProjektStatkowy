@@ -10,17 +10,16 @@
 #include "VBO.h"
 
 #include "Camera.h"
-#include "indices.h"
 #include <vector>
-
+#include <algorithm>
 
 using std::cout;
 using std::endl;
 
-#define woda_width 20.0f
+#define woda_width 50.0f
 
-const unsigned int const_width = 1000;
-const unsigned int const_height = 1000;
+const unsigned int const_width = 1920;
+const unsigned int const_height = 1080;
 
 GLfloat wyspa1_indices[] =
 { //     COORDINATES					/        COLORS      /				 TexCoord  //
@@ -128,42 +127,153 @@ GLfloat wyspa1_indices[] =
 
 };
 
-GLfloat woda_indices[] = {
--woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-0.0f, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
--woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
--woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
+GLfloat woda_indices[] = 
+{
+-woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
+-woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f,			25.0f, 0.0f,
+woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f,					0.0f, 25.0f,
 
-woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-0.0f, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
-woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
-
-woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-0.0f, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
-woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
-
--woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
-0.0f, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
--woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f, 0.5f, 0.0f,
--woda_width,	 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-0.0f,   0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.5f,
-
+woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f,		 25.0f, 25.0f,
+-woda_width,	 woda_width, 0.0f, 1.0f, 0.0f, 1.0f,			25.0f, 0.0f,
+woda_width,   -woda_width, 0.0f, 1.0f, 0.0f, 1.0f,					0.0f, 25.0f,
 };
 
+GLfloat log_indices[] = 
+{
+	//Side A - OK
+	-0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
+	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	-0.5f, -0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+
+	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	-0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+	-0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
+
+	//Side B - OK
+	-0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	-0.5f, -0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	-0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+	0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
+	//Side C - OK
+	0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
+	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	0.5f, 0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+
+	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+	-0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
+	//Side D - OK
+	0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	0.5f, 0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
+	0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+	0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
+};
+
+GLfloat liscie_indices[] =
+{
+	//Bottom
+	-1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	 1.0f, -1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	-1.0f,  1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+	 1.0f,  1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+	 1.0f, -1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	-1.0f,  1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+	//Rising East
+	-1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	-1.0f,  1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	-1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+	-1.0f,  1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	-1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+	-1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+	//Rising North
+	-1.0f,  1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	-1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	 1.0f,  1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+
+	-1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	 1.0f,  1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	 1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+	 //Rising West
+	  1.0f,  1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	  1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	  1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+
+	  1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	  1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	  1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+	  //Rising South
+	   1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	   1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	  -1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+
+	   1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	  -1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	  -1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+	  //Side East
+	  -1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	  -1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	  -1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+	  -1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	  -1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	  -1.2f,  1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+	  //Side North
+	  -1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+	   1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	  -1.2f,  1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+	  -1.2f,  1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+	   1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+	   1.2f,  1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+	   //Side West
+		1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+		1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+		1.2f,  1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+		1.2f,  1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+		1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+		1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+		//Side South
+		 1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+		-1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+		 1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+		 1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+		-1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+		-1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+		//Topside
+		-1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+		 1.2f, -1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+		-1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+		 1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+		 1.2f, -1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+		-1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+
+
+};
 
 void drawThing(int whichIndices, const char* image, Shader shadProg) {
 	//Stwórz pusty VBO, za moment wypełnimy
 	VBO obVBO;
-
 
 	//Wybierz indices to wygenerowania, zwykł parsing jakoś nie chce działać
 	switch (whichIndices)
@@ -172,10 +282,14 @@ void drawThing(int whichIndices, const char* image, Shader shadProg) {
 		obVBO.setData(wyspa1_indices, sizeof(wyspa1_indices));
 		break;
 	case 1:
-		obVBO.setData(woda_indices, sizeof(woda_indices));
+		 obVBO.setData(woda_indices, sizeof(woda_indices));
+		break;
+	case 2:
+		
 		break;
 
 	default:
+		 obVBO.setData(woda_indices, sizeof(woda_indices));
 		break;
 	}
 		
@@ -191,14 +305,9 @@ void drawThing(int whichIndices, const char* image, Shader shadProg) {
 	obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 
+	glDrawArrays(GL_TRIANGLES, 0, 100 * 3);
 
-
-	glDrawArrays(GL_TRIANGLES, 0, 500 * 3);
-
-	//Unbind i Delete, żeby zużycie pamięci nie rosło jak bloki nad Wisłą
-	obVAO.Unbind();
-	obVBO.Unbind();
-	texture.Unbind();
+	//Delete, żeby zużycie pamięci nie rosło jak bloki nad Wisłą
 	obVAO.Delete();
 	obVBO.Delete();
 	texture.Delete();
@@ -208,23 +317,132 @@ void drawOcean(int frameState, Shader shaderProgram) {
 
 	switch (frameState) {
 	case 0:
-		drawThing(1, "everything_texture_frame1.png", shaderProgram);
+		drawThing(1, "water_frame0.png", shaderProgram);
 		break;
 	case 1:
-		drawThing(1, "everything_texture_frame2.png", shaderProgram);
+		drawThing(1, "water_frame1.png", shaderProgram);
 		break;
 	case 2:
-		drawThing(1, "everything_texture_frame3.png", shaderProgram);
+		drawThing(1, "water_frame2.png", shaderProgram);
 		break;
 	case 3:
-		drawThing(1, "everything_texture_frame4.png", shaderProgram);
+		drawThing(1, "water_frame3.png", shaderProgram);
+		break;
+	case 4:
+		drawThing(1, "water_frame4.png", shaderProgram);
+		break;
+	case 5:
+		drawThing(1, "water_frame5.png", shaderProgram);
+		break;
+	case 6:
+		drawThing(1, "water_frame6.png", shaderProgram);
+		break;
+	case 7:
+		drawThing(1, "water_frame7.png", shaderProgram);
 		break;
 	default:
+		drawThing(1, "water_frame8.png", shaderProgram);
 		break;
 	}
 
 }
+void drawDrzewo(GLfloat x_location, GLfloat y_location, GLfloat z_location, int height,Shader shadProg) {
+	//Skopiuj dane z tablicy drzewa [ma tylko 1 pień]
+	GLfloat currentLog[sizeof(log_indices)];
+	std::copy(std::begin(log_indices), std::end(log_indices), currentLog);
 
+	//Zmien koodynaty do cord'ów drzewa w których chcemy je wygenerować
+	//Loop po całej pętli, dodajemy offset koordynatów XYZ
+	for (int i = 0; i < 192; i++) {
+		int id = i % 8;
+		switch (id) {
+		case 0:
+			currentLog[i] += x_location;
+			break;
+		case 1:
+			currentLog[i] += y_location;
+			break;
+		case 2:
+			currentLog[i] += z_location;
+			break;
+		default:
+			break;
+		}
+	}
+
+	
+	//Rysowanie Pnia drzewa
+	for (int i = 0; i < height; i++) {
+
+		//Rysowanie - prepare
+		VBO obVBO(currentLog, sizeof(currentLog));
+		VAO obVAO;
+		obVAO.Bind();
+		obVAO.LinkAttrib(obVBO, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+		obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+		obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+		Texture texture("wood.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+		texture.texUnit(shadProg, "tex0", 0);
+		texture.Bind();
+		//DrawArray
+		glDrawArrays(GL_TRIANGLES, 0, 100 * 3);
+		obVAO.Delete();
+		obVBO.Delete();
+		texture.Delete();
+		//Zmien wysokosc, zeby kolejny pien byl wyzej
+		for (int i = 0; i < 192; i++) {
+			int id = i % 8;
+			if (id == 2)
+				currentLog[i] += 1;
+		}
+	}
+
+
+
+	//Rysowanie Korony drzewa
+	//Offset coodrynatów
+	GLfloat currentLeaves[sizeof(liscie_indices)];
+	std::copy(std::begin(liscie_indices), std::end(liscie_indices), currentLeaves);
+	for (int i = 0; i < 480; i++) {
+		int id = i % 8;
+		switch (id) {
+		case 0:
+			currentLeaves[i] += x_location;
+			break;
+		case 1:
+			currentLeaves[i] += y_location;
+			break;
+		case 2:
+			currentLeaves[i] += z_location;
+			currentLeaves[i] += height;
+			break;
+		default:
+			break;
+		}
+	}
+
+	//Prepare the sauce
+	VBO obVBO(currentLeaves, sizeof(currentLeaves));
+	VAO obVAO;
+	obVAO.Bind();
+	obVAO.LinkAttrib(obVBO, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+	obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	Texture texture("leaves.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	texture.texUnit(shadProg, "tex0", 0);
+	texture.Bind();
+	
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//Draw
+	glDrawArrays(GL_TRIANGLES, 0, 100 * 3);
+	//Delete this usless stuff
+	obVAO.Delete();
+	obVBO.Delete();
+	texture.Delete();
+	glDisable(GL_BLEND);
+
+}
 
 
 
@@ -259,13 +477,13 @@ int main()
 	int frame_state = 0;
 	while (!glfwWindowShouldClose(window))
 	{
-		//Porcja odpowiedzialna za klatkę animacji
+		//Liczenie czy podmieniamy klatke animacji
 		currTime = glfwGetTime();
-		if (currTime - prevTime > 0.5) {
+		if (currTime - prevTime > 1) {
 			frame_state++;
 			prevTime = currTime;
 		}
-		if (frame_state >= 4)
+		if (frame_state >= 8)
 			frame_state = 0;
 
 		//Buffer Głębokości, Zapasowe tło, Szader
@@ -292,9 +510,10 @@ int main()
 		//RYSOWANIE OBIEKTÓW	
 		drawThing(0,"everything_texture.png",shaderProgram);		//Wyspa
 		drawOcean(frame_state, shaderProgram);						//Morze
+		drawDrzewo(0, 0, 0, 3, shaderProgram);
 																	//Wyspa 2
 																	//Wyspa 3
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(window);									//Update Window
 		glfwPollEvents();
 
 	//	cout << "\n\nX:" << kamera.Position.x << "\tY:" << kamera.Position.y << "\tZ:" << kamera.Position.z << endl;
