@@ -129,50 +129,60 @@ GLfloat wyspa1_indices[] =
 
 GLfloat woda_indices[] = 
 {
--woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
--woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f,			25.0f, 0.0f,
-woda_width, -woda_width, 0.0f, 1.0f, 0.0f, 1.0f,					0.0f, 25.0f,
+-woda_width, -woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
+-woda_width, woda_width, 0.0f,			1.0f, 0.0f, 1.0f,			25.0f, 0.0f,
+woda_width, -woda_width, 0.0f,			1.0f, 0.0f, 1.0f,					0.0f, 25.0f,
 
-woda_width, woda_width, 0.0f, 1.0f, 0.0f, 1.0f,		 25.0f, 25.0f,
--woda_width,	 woda_width, 0.0f, 1.0f, 0.0f, 1.0f,			25.0f, 0.0f,
-woda_width,   -woda_width, 0.0f, 1.0f, 0.0f, 1.0f,					0.0f, 25.0f,
+woda_width, woda_width, 0.0f,		1.0f, 0.0f, 1.0f,		 25.0f, 25.0f,
+-woda_width,woda_width, 0.0f,		1.0f, 0.0f, 1.0f,			25.0f, 0.0f,
+woda_width, -woda_width, 0.0f,		 1.0f, 0.0f, 1.0f,					0.0f, 25.0f,
 };
 
-GLfloat log_indices[] = 
+GLfloat log_indices[] =
 {
-	//Side A - OK
-	-0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
-	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	-0.5f, -0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+-0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+-0.25f, 0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+-0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+-0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+-0.25f, 0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+-0.25f, 0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 
-	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	-0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
-	-0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
+-0.25f, 0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+0.25f, 0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+-0.25f, 0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+-0.25f, 0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+0.25f, 0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.25f, 0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 
-	//Side B - OK
-	-0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
-	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	-0.5f, -0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+0.25f, 0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.25f, 0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+0.25f, 0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 
-	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	-0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
-	0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
-	//Side C - OK
-	0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
-	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	0.5f, 0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+0.25f, -0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+0.25f, -0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.25f, -0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 
-	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
-	-0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
-	//Side D - OK
-	0.5f, 0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
-	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	0.5f, 0.5f, 1.5, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
+0.25f, -0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+-0.25f, -0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+0.25f, -0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+0.25f, -0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+-0.25f, -0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+-0.25f, -0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
 
-	0.5f, -0.5f, 0.5f, 1.0f, 0.0f, 1.0f,		1.0f, 0.0f,
-	0.5f, 0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		0.0f, 1.0f,
-	0.5f, -0.5f, 1.5f, 1.0f, 0.0f, 1.0f,		1.0f, 1.0f,
+-0.25f, -0.433012f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+-0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+-0.25f, -0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+-0.25f, -0.433012f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f,
+-0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f,
+-0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+
+
 };
 
 GLfloat liscie_indices[] =
@@ -271,6 +281,47 @@ GLfloat liscie_indices[] =
 
 };
 
+GLfloat skala_indices[] =
+{
+-0.8f, -0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+-0.8f,  0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+-0.8f, -0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+-0.8f, -0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+-0.8f,  0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+-0.8f,  0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+//Side North
+-0.8f,  0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+ 0.8f,  0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+-0.8f,  0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+-0.8f,  0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+ 0.8f,  0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+ 0.8f,  0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+ //Side West
+  0.8f,  0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+  0.8f, -0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+  0.8f,  0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+  0.8f,  0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+  0.8f, -0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+  0.8f, -0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+  //Side South
+   0.8f, -0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+  -0.8f, -0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+   0.8f, -0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+
+   0.8f, -0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+  -0.8f, -0.8f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+  -0.8f, -0.8f, 2.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+
+
+
+};
+
 void drawThing(int whichIndices, const char* image, Shader shadProg) {
 	//Stwórz pusty VBO, za moment wypełnimy
 	VBO obVBO;
@@ -285,11 +336,11 @@ void drawThing(int whichIndices, const char* image, Shader shadProg) {
 		 obVBO.setData(woda_indices, sizeof(woda_indices));
 		break;
 	case 2:
-		
+		obVBO.setData(skala_indices, sizeof(skala_indices));
 		break;
 
 	default:
-		 obVBO.setData(woda_indices, sizeof(woda_indices));
+		 obVBO.setData(log_indices, sizeof(log_indices));
 		break;
 	}
 		
@@ -353,7 +404,7 @@ void drawDrzewo(GLfloat x_location, GLfloat y_location, GLfloat z_location, int 
 
 	//Zmien koodynaty do cord'ów drzewa w których chcemy je wygenerować
 	//Loop po całej pętli, dodajemy offset koordynatów XYZ
-	for (int i = 0; i < 192; i++) {
+	for (int i = 0; i < 288; i++) {
 		int id = i % 8;
 		switch (id) {
 		case 0:
@@ -390,7 +441,7 @@ void drawDrzewo(GLfloat x_location, GLfloat y_location, GLfloat z_location, int 
 		obVBO.Delete();
 		texture.Delete();
 		//Zmien wysokosc, zeby kolejny pien byl wyzej
-		for (int i = 0; i < 192; i++) {
+		for (int i = 0; i < 288; i++) {
 			int id = i % 8;
 			if (id == 2)
 				currentLog[i] += 1;
@@ -479,7 +530,7 @@ int main()
 	{
 		//Liczenie czy podmieniamy klatke animacji
 		currTime = glfwGetTime();
-		if (currTime - prevTime > 1) {
+		if (currTime - prevTime > 0.5) {
 			frame_state++;
 			prevTime = currTime;
 		}
@@ -510,7 +561,10 @@ int main()
 		//RYSOWANIE OBIEKTÓW	
 		drawThing(0,"everything_texture.png",shaderProgram);		//Wyspa
 		drawOcean(frame_state, shaderProgram);						//Morze
-		drawDrzewo(0, 0, 0, 3, shaderProgram);
+		drawDrzewo(0, 2, 0, 2, shaderProgram);						//Wyspa1-Drzewo1
+		drawDrzewo(-1, -2, 0, 5, shaderProgram);					//Wyspa2-Drzewo2
+		//drawThing(2, "stone.png", shaderProgram);
+		drawThing(3, "wood.png", shaderProgram);
 																	//Wyspa 2
 																	//Wyspa 3
 		glfwSwapBuffers(window);									//Update Window

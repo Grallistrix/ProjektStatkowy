@@ -33,6 +33,5 @@ public:
 	glm::vec3 RetOrientNormV3();
 	glm::vec2 RetOrientNormV2();
 	float focusDistance();
-	void sanitizeDistance();
 };
 #endif
