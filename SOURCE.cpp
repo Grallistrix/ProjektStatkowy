@@ -41,7 +41,7 @@ GLfloat wyspa_vertices[] = {
 
    //Trawa
    //8,9,10,11
-    -3.0f,0.0f, 0.5f  ,								  1.0f, 0.0f, 1.0f,      0.53f, 1.0f,
+	-3.0f,0.0f, 0.5f  ,								  1.0f, 0.0f, 1.0f,      0.53f, 1.0f,
 	-2.1213203435596f,-2.1213203435596f, 0.5f,        1.0f, 0.0f, 1.0f,      0.62f, 1.0f,
 	0.0f,-3.0f, 0.5f     ,							  1.0f, 0.0f, 1.0f,      0.41f, 1.0f,
 	2.1213203435596f,-2.1213203435596f, 0.5f,         1.0f, 0.0f, 1.0f,      0.18f, 1.0f,
@@ -94,16 +94,16 @@ GLuint wyspa_indices[] = {
 
 GLfloat woda_vert[] = {
 -woda_width, -woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		0.0f, 0.0f,
--woda_width, woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		25.0f, 0.0f,
-woda_width, -woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		0.0f, 25.0f,
-woda_width, woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		25.0f, 25.0f,
+-woda_width, woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		50.0f, 0.0f,
+woda_width, -woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		0.0f, 50.0f,
+woda_width, woda_width, 0.0f,			1.0f, 0.0f, 1.0f,		50.0f, 50.0f,
 };
 GLuint woda_indices[] = {
 	0,1,2,
 	1,2,3,
 };
 
-GLfloat log_vert[] ={	
+GLfloat log_vert[] = {
 	//X   Y     Z				||  R     G     B     ||         Text-X, Text-Y
 	//BOTTOM
 	//0
@@ -132,10 +132,10 @@ GLfloat log_vert[] ={
 	-0.25f, -0.433012f, 1.0f,		 1.0f, 0.0f, 1.0f,				 0.0f, 1.0f,
 	//11
 	0.25f, -0.433012f, 1.0f,		1.0f, 0.0f, 1.0f,				1.0f, 1.0f,
-	
+
 
 };
-GLuint log_indices[] ={
+GLuint log_indices[] = {
 
 	//Side A
 	0,1,6,
@@ -155,7 +155,7 @@ GLuint log_indices[] ={
 	//Side F
 	0,5,6,
 	5,6,11,
-	
+
 };
 
 GLuint liscie_indices[] = {
@@ -193,24 +193,24 @@ GLuint liscie_indices[] = {
 GLfloat liscie_vert[] = {
 	//Bottom - 0,1,2,3 
 -1.0f, -1.0f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
- 1.0f, -1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f, 
+ 1.0f, -1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
  1.0f,  1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
 -1.0f,  1.0f, 0.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
 
- //Rising Side - 4,5,6,7
- -1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			2.0f, 1.5f, 
-  1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.5f, 2.0f,
-  1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			2.0f, 1.5f,
- -1.2f, 1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,				1.5f, 2.0f,
+//Rising Side - 4,5,6,7
+-1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			2.0f, 1.5f,
+ 1.2f, -1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			1.5f, 2.0f,
+ 1.2f,  1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,			2.0f, 1.5f,
+-1.2f, 1.2f, 0.5f,		    1.0f, 0.0f, 1.0f,				1.5f, 2.0f,
 
-  //Topside 8,9,10,11 
-   -1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
-   1.2f, -1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,   
-   1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
-  -1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
+//Topside 8,9,10,11 
+ -1.2f, -1.2f, 2.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
+ 1.2f, -1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
+ 1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			1.0f, 1.0f,
+-1.2f,  1.2f, 2.0f,			1.0f, 0.0f, 1.0f,			0.0f, 1.0f,
 };
 
-GLfloat skala_vert[] ={
+GLfloat skala_vert[] = {
 	//0 1 2 3
 -0.5f, -0.5f, 0.0f,		    1.0f, 0.0f, 1.0f,			0.0f, 0.0f,
  0.5f, -0.5f, 0.0f,		    1.0f, 0.0f, 1.0f,			1.0f, 0.0f,
@@ -225,11 +225,11 @@ GLfloat skala_vert[] ={
 -0.02f, 0.21f, 1.0f,			1.0f, 0.0f, 1.0f,			2.5f, 2.9f,
 
 };
-GLuint skala_indices[] ={
+GLuint skala_indices[] = {
 	//Base
 	0, 2, 6,
 	0, 7, 1,
-	1, 3, 4, 
+	1, 3, 4,
 	2, 3, 5,
 	//Base Filling
 	0,6,7,
@@ -250,7 +250,40 @@ void drawOceanFrame(const char* image, Shader shadProg);
 void drawLiscie(GLfloat x_location, GLfloat y_location, GLfloat z_location, Shader shadProg);
 void drawDrzewko(GLfloat x_location, GLfloat y_location, GLfloat z_location, int height, Shader shadProg);
 void drawSkala(GLfloat x_location, GLfloat y_location, GLfloat z_location, Shader shadProg);
+void drawOceanFloor(Shader shadProg) {
+	GLfloat localVertics[sizeof(woda_vert) / 4];
+	std::copy(std::begin(woda_vert), std::end(woda_vert), localVertics);
 
+	for (int i = 0; i < sizeof(localVertics) / 4; i++) {
+		int id = i % 8;
+		if(id==2)
+			localVertics[i] -=0.5f;
+	}
+
+	VAO obVAO;
+	obVAO.Bind();
+	VBO obVBO(localVertics, sizeof(localVertics));
+	EBO obEBO(woda_indices, sizeof(woda_indices));
+
+	//Linkowanie atrybutów
+	obVAO.LinkAttrib(obVBO, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+	obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+
+	Texture OceanFloor("drench.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	OceanFloor.texUnit(shadProg, "tex0", 0);
+	OceanFloor.Bind();
+	//Draw
+	glDrawElements(GL_TRIANGLES, 72, GL_UNSIGNED_INT, 0);
+	//Delete this usless stuff
+	glDisable(GL_BLEND);
+
+	obEBO.Delete();
+	obVBO.Delete();
+	obVAO.Delete();
+	OceanFloor.Delete();
+
+}
 
 int main()
 {
@@ -285,7 +318,7 @@ int main()
 	{
 		//Liczenie czy podmieniamy klatke animacji
 		currTime = glfwGetTime();
-		if (currTime - prevTime > 0.05) {
+		if (currTime - prevTime > 0.2) {
 			frame_state++;
 			prevTime = currTime;
 		}
@@ -302,20 +335,8 @@ int main()
 		kamera.Inputs(window);
 		kamera.Matrix(30.0f, 1.0f, 80.0f, shaderProgram, "camMatrix");
 
-
-		/// /RYSOWANIE 
-		/// Najpierw zbinduj teksture
-		/// potem zbinduj VAO
-		/// na końcu draw		
-		/// 
-		///VAO_morze.Bind();
-		///texture_morze.Bind();
-		//glDrawArrays(GL_TRIANGLES, 0, 500 * 3);
-
-
+		drawOceanFloor(shaderProgram);
 		//RYSOWANIE OBIEKTÓW	
-		
-		
 		drawOcean(frame_state, shaderProgram);
 
 
@@ -323,8 +344,8 @@ int main()
 		drawWyspa(15, -3, -0.15, shaderProgram);
 		drawWyspa(-7.3, 1.2, -0.6, shaderProgram);
 		drawWyspa(18, 20, 0.1, shaderProgram);
-		
-		drawDrzewko(2,-1,0,3,shaderProgram);
+
+		drawDrzewko(2, -1, 0, 3, shaderProgram);
 		drawDrzewko(-3, 3, 0, 6, shaderProgram);
 		drawDrzewko(17, -2.4, 0, 1, shaderProgram);
 		drawDrzewko(19.1, 20.6, 0, 5, shaderProgram);
@@ -345,9 +366,9 @@ int main()
 		glfwPollEvents();
 
 		cout << "\n\nX:" << kamera.Position.x << "\tY:" << kamera.Position.y << "\tZ:" << kamera.Position.z << endl;
-	//	cout << "Looking at:\t" "X:" << kamera.Orientation.x << "\tY:" << kamera.Orientation.y << "\tZ:" << kamera.Orientation.z << endl;
+		//	cout << "Looking at:\t" "X:" << kamera.Orientation.x << "\tY:" << kamera.Orientation.y << "\tZ:" << kamera.Orientation.z << endl;
 	}
-	
+
 
 	shaderProgram.Delete();
 	glfwDestroyWindow(window);
@@ -391,7 +412,7 @@ void drawWyspa(GLfloat x_location, GLfloat y_location, GLfloat z_location, Shade
 	obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 
-	Texture wyspa_texture("wyspa.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	Texture wyspa_texture("Sand.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	wyspa_texture.texUnit(shadProg, "tex0", 0);
 	wyspa_texture.Bind();
 
@@ -455,7 +476,13 @@ void drawOceanFrame(const char* image, Shader shadProg) {
 	waterTexture.Bind();
 
 	//Draw
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//Draw
 	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+	//Delete this usless stuff
+	glDisable(GL_BLEND);
+	
 
 	obEBO.Delete();
 	obVBO.Delete();
@@ -514,12 +541,10 @@ void drawLiscie(GLfloat x_location, GLfloat y_location, GLfloat z_location, Shad
 
 }
 void drawDrzewko(GLfloat x_location, GLfloat y_location, GLfloat z_location, int height, Shader shadProg) {
-
 	//Skopiuj indices pnia, tak żeby dało się je przemieścić w odpowiednie miejsce
 	//Dzielone przez 4, bo OpenGL-float lubi zwracać x4 więcej niż powinnien
 	GLfloat currentLog[sizeof(log_vert) / 4];
 	std::copy(std::begin(log_vert), std::end(log_vert), currentLog);
-
 
 	//Zmien koodynaty PNIA do cord'ów miejsca w których chcemy je wygenerować - Loop po lokalnej kopii indices (currentLog)
 	for (int i = 0; i < sizeof(currentLog) / 4; i++) {
@@ -538,12 +563,11 @@ void drawDrzewko(GLfloat x_location, GLfloat y_location, GLfloat z_location, int
 			break;
 		}
 	}
-
 	//Pętla rysująca CAŁY pień, blok po bloku - narysuj blok i zmień położenie następnego (currentLog - indices)
 	for (int i = 0; i < height; i++) {
 		//RYSOWANIE
-//Tworzy,y obiekty VAO, EBO, VBO
-//VBO działa na lokalnej kopii indices (zachowuje offset), EBO na globalnych po kształt ten sam zostaje
+		//Tworzy,y obiekty VAO, EBO, VBO
+		//VBO działa na lokalnej kopii indices (zachowuje offset), EBO na globalnych po kształt ten sam zostaje
 		VAO obVAO;
 		obVAO.Bind();
 		VBO obVBO(currentLog, sizeof(currentLog));
@@ -609,7 +633,7 @@ void drawSkala(GLfloat x_location, GLfloat y_location, GLfloat z_location, Shade
 	obVAO.LinkAttrib(obVBO, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	obVAO.LinkAttrib(obVBO, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 
-	Texture stoneTexture("stone.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	Texture stoneTexture("rock.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	stoneTexture.texUnit(shadProg, "tex0", 0);
 	stoneTexture.Bind();
 

@@ -1,5 +1,7 @@
 #include "Camera.h"
 
+using namespace std;
+
 Camera::Camera(int width, int height, glm::vec3 position)
 {
 	Camera::width = width;
@@ -12,10 +14,8 @@ void Camera::Matrix(float FOVdeg, float nearPlane, float farPlane, Shader& shade
 	glm::mat4 view = glm::mat4(1.0f);
 	glm::mat4 projection = glm::mat4(1.0f);
 	view = glm::lookAt(Position, Orientation, Up);
-	projection = glm::perspective(glm::radians(FOVdeg), (float)width / height,
-		nearPlane, farPlane);
-	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE,
-		glm::value_ptr(projection * view));
+	projection = glm::perspective(glm::radians(FOVdeg), (float)width / height,	nearPlane, farPlane);
+	glUniformMatrix4fv(glGetUniformLocation(shader.ID, uniform), 1, GL_FALSE,glm::value_ptr(projection * view));
 }
 
 glm::vec3 Camera::RetOrientNormV3() {
@@ -40,6 +40,8 @@ float Camera::focusDistance() {
 
 void Camera::Inputs(GLFWwindow* window)
 {
+
+	cout << Orientation.x << " " << Orientation.y << " " << Orientation.z << endl;
 	// Obsluga klawiszy
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && wPress) {
 
@@ -76,11 +78,13 @@ void Camera::Inputs(GLFWwindow* window)
 		Position.z += 0.05;
 		std::cout << "space\n";
 	}
-	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS && Position.z >= 0.0f)
 	{
 		Position.z += -0.05;
 		std::cout << "l_ctrl\n";
 	}
+	if (Position.z < 0.0f)
+		Position.z = 0.0f;
 
 	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 	{
