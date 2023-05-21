@@ -37,91 +37,61 @@ float Camera::focusDistance() {
 	return wynik;
 }
 
-void Camera::sanitizeDistance() {
-	if (focusDistance() > 1000) {
-		Orientation.x /= 10;
-		Orientation.y /= 10;
-	}
-}
 
 void Camera::Inputs(GLFWwindow* window)
 {
 	// Obsluga klawiszy
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS && wPress) {
-		//wPress = false;
 
 		glm::vec2 newPos = RetOrientNormV2();
 		Orientation += glm::vec3(newPos, 0);
 		Position += speed * glm::vec3(newPos, 0);
-		sanitizeDistance();
 
 		std::cout << "w\n";
 	}
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS && sPress)
 	{
-		//sPress = false;
-		if (firstMove) {
-			Orientation.x *= 2;
-			Orientation.y *= 2;
-			firstMove = false;
-		}
+
 		glm::vec2 newPos = RetOrientNormV2();
 		Orientation += glm::vec3(newPos, 0);
 		Position += -speed * glm::vec3(newPos, 0);
-		sanitizeDistance();
 
 		std::cout << "s\n";
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS && aPress)
 	{
-		//	aPress = false;
 		Orientation = glm::rotate(Orientation, glm::radians(1.0f), Up);
 
 		std::cout << "a\n";
 	}
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS && dPress)
 	{
-		//dPress = false;
 		Orientation = glm::rotate(Orientation, glm::radians(-1.0f), Up);
 		std::cout << "d\n";
 	}
 
-	/*
-	//Obs³uga release w celu pojedyñczych akcji
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_RELEASE)
-		wPress = true;
-
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_RELEASE)
-		sPress = true;
-
-	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_RELEASE)
-		aPress = true;
-
-	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_RELEASE)
-		dPress = true;
-	*/
 
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
 	{
-		Position.z += 0.01;
-		//Orientation.z += 0.03;
+		Position.z += 0.05;
 		std::cout << "space\n";
 	}
 	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
 	{
-		Position.z += -0.01;
-		//Orientation.z += -0.03;
+		Position.z += -0.05;
 		std::cout << "l_ctrl\n";
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 	{
-		Orientation.z += 0.06;
+		glm::vec3 RotateAround = glm::cross(Orientation, Up);
+		Orientation = glm::rotate(Orientation, glm::radians(1.0f), RotateAround);
 		std::cout << "k\n";
 	}
 	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
 	{
-		Orientation.z += -0.06;
+		glm::vec3 RotateAround = glm::cross(Orientation, Up);
+		Orientation = glm::rotate(Orientation, glm::radians(-1.0f), RotateAround);
 		std::cout << "l\n";
 	}
 }
